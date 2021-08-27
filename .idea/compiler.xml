@@ -7,6 +7,7 @@
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
         <module name="crud-mvc-hibernate" />
+        <module name="security" />
         <module name="spring-mvc" />
         <module name="2.2.2. spring_mvc" />
         <module name="work-crud" />

@@ -42,12 +42,9 @@ public class UserDAOImpl implements UserDAO {
     }
 
     @Override
-    public User getUserByNickName(String nickname) {
-      Query query =  entityManager.createNativeQuery("SELECT nick_name FROM users WHERE nick_name = " + nickname, User.class);
-      query.executeUpdate();
-      System.out.println("Test name" + nickname);
-      User user = (User) query.getResultList().get(0);
-      return user ;
+    public User getUserByLogin(String login) {
+      Query query =  entityManager.createQuery("SELECT u FROM User u WHERE u.login = :login", User.class);
+      return (User) query.setParameter("login", login).getSingleResult();
     }
 
     @Override

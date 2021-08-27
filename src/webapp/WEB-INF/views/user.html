@@ -1,8 +1,8 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>All users</title>
+    <title>Hello</title>
 </head>
 <body>
 <table>
@@ -15,19 +15,11 @@
         <th>Update</th>
         <th>Delete</th>
     </tr>
-    <tr th:each="user : ${userList}">
         <td th:text="${user.getId()}">model</td>
-        <td th:text="${user.getLogin()}">Login</td>
+        <td th:text="${user.getLogin()}">nick_name</td>
         <td th:text="${user.getFirstName()}">model</td>
         <td th:text="${user.getLastName()}">model</td>
         <td th:text="${user.getRole()}">Role</td>
-        <td> <a th:href="@{/users/{id}/edit (id =${user.getId()})}">Update</a> </td>
-        <form th:method="DELETE" th:action="@{/users/{id} (id =${user.getId()})}">
-            <td><input type="submit" value="DELETE"/></td>
-        </form>
-    </tr>
 </table>
-
-<a href="/users/new"> New User</a>
 </body>
 </html>

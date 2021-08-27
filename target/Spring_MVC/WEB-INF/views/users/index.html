@@ -11,18 +11,18 @@
         <th>Name</th>
         <th>LastName</th>
         <th>Role</th>
-        <th>nick_name</th>
+        <th>Login</th>
         <th>Update</th>
         <th>Delete</th>
     </tr>
     <tr th:each="user : ${userList}">
         <td th:text="${user.getId()}">model</td>
-        <td th:text="${user.getNick_name()}">nick_name</td>
+        <td th:text="${user.getLogin()}">Login</td>
         <td th:text="${user.getFirstName()}">model</td>
         <td th:text="${user.getLastName()}">model</td>
         <td th:text="${user.getRole()}">Role</td>
-        <td> <a th:href="@{/users/{id}/edit (id =${user.getUser_id()})}">Update</a> </td>
-        <form th:method="DELETE" th:action="@{/users/{id} (id =${user.getUser_id()})}">
+        <td> <a th:href="@{/users/{id}/edit (id =${user.getId()})}">Update</a> </td>
+        <form th:method="DELETE" th:action="@{/users/{id} (id =${user.getId()})}">
             <td><input type="submit" value="DELETE"/></td>
         </form>
     </tr>

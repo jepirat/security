@@ -4,12 +4,14 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
+import org.springframework.stereotype.Service;
 
-public class UerServiceService  implements UserDetailsService {
+@Service
+public class UserLoginService implements UserDetailsService {
     @Autowired
     UserService userService;
     @Override
-    public UserDetails loadUserByUsername(String nick_name) throws UsernameNotFoundException {
-        return userService.getUserByNickName(nick_name);
+    public UserDetails loadUserByUsername(String login) throws UsernameNotFoundException {
+        return userService.getUserByLogin(login);
     }
 }

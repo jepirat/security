@@ -46,8 +46,8 @@ public class UserServiceImp implements UserService {
 
     @Transactional
     @Override
-    public User getUserByNickName(String nick_name) {
-        return userDAO.getUserByNickName(nick_name);
+    public User getUserByLogin(String login) {
+        return userDAO.getUserByLogin(login);
     }
 
     @Transactional

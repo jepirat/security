@@ -59,10 +59,13 @@ public class WebConfig implements WebMvcConfigurer {
         Set<Role> roleSet = new HashSet<>();
         roleSet.add(Role.ADMIN);
         userService.removeAll();
-        User user = new User("admin", "vasya", "pupkin", "12345", roleSet);
+        Set<Role> userRole = new HashSet<>();
+        userRole.add(Role.USER);
+        User user = new User("user", "gena", "pupkin", "12345", userRole);
+        User admin = new User("admin", "vasya", "pupkin", "12345", roleSet);
+        userService.add(admin);
         userService.add(user);
         userService.getAllUsers().forEach(y -> System.out.println(y));
-        System.out.println("Test metoda" + userService.getUserByNickName("admin"));
         viewControllerRegistry.addViewController("/login").setViewName("login");
     }
 }

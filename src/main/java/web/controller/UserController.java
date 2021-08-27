@@ -1,6 +1,7 @@
 package web.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
@@ -15,16 +16,14 @@ import java.util.Set;
 
 @Controller
 @RequestMapping("/users")
+@PreAuthorize("hasAuthority('ADMIN')")
+
 public class UserController {
     @Autowired
     UserService userService;
 
     @GetMapping
     public String usersController(Model model) {
-//        User admin = new User("admin", "vasya", "petrov", "12345", "");
-//        User user = new User("user", "gena", "sidorov", "12345", userRole);
-//        userService.add(admin);
-
         List<User> users = userService.getAllUsers();
         model.addAttribute("userList", users);
         return "users/index";
@@ -44,6 +43,7 @@ public class UserController {
 
     @GetMapping("/{id}/edit")
     public String edit(Model model, @PathVariable("id") long id) {
+        model.addAttribute("role", Role.values());
         model.addAttribute("user", userService.getUserById(id));
         return "users/edit";
     }

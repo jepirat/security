@@ -10,11 +10,11 @@ import java.util.*;
 public class User implements UserDetails {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "user_id" ,nullable = false )
+    @Column(name = "user_id", nullable = false )
     private Long id;
 
-    @Column(name = "nick_name", nullable = false )
-    String nick_name;
+    @Column(name = "login", nullable = false )
+    String login;
 
     @Column(name = "name", nullable = false )
     private String firstName;
@@ -33,8 +33,8 @@ public class User implements UserDetails {
     public User() {
     }
 
-    public User(String nick_name, String firstName, String lastName, String password, Set<Role> roles) {
-        this.nick_name = nick_name;
+    public User(String login, String firstName, String lastName, String password, Set<Role> roles) {
+        this.login = login;
         this.firstName = firstName;
         this.lastName = lastName;
         this.password = password;
@@ -44,47 +44,36 @@ public class User implements UserDetails {
     public Long getId() {
         return id;
     }
-
     public void setId(Long id) {
         this.id = id;
     }
-
-    public void setNick_name(String nick_name) {
-        this.nick_name = nick_name;
+    public void setLogin(String login) {
+        this.login = login;
     }
-
     public void setPassword(String password) {
         this.password = password;
     }
-
     public String getFirstName() {
         return firstName;
     }
-
     public void setFirstName(String firstName) {
         this.firstName = firstName;
     }
-
     public String getLastName() {
         return lastName;
     }
-
     public void setLastName(String lastName) {
         this.lastName = lastName;
     }
-
-    public String getNick_name() {
-        return nick_name;
+    public String getLogin() {
+        return login;
     }
-
     public Collection<Role> getRoles() {
         return roles;
     }
-
     public void setRoles(Set<Role> roles) {
         this.roles = roles;
     }
-
     public Set<Role> getRole() {
         return roles;
     }
@@ -101,7 +90,7 @@ public class User implements UserDetails {
 
     @Override
     public String getUsername() {
-        return getNick_name();
+        return getLogin();
     }
 
     @Override
@@ -126,9 +115,9 @@ public class User implements UserDetails {
 
     @Override
     public String toString() {
-        return "User{" +
+        return "User {" +
                 "id=" + id +
-                ", nick_name='" + nick_name + '\'' +
+                ", nick_name='" + login + '\'' +
                 ", firstName='" + firstName + '\'' +
                 ", lastName='" + lastName + '\'' +
                 ", password='" + password + '\'' +

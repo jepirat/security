@@ -9,6 +9,6 @@ public interface UserDAO {
     public User getUserById(long id);
     public void updateUser(long id, User user);
     public void deleteUser(long id);
-    public User getUserByNickName(String nickname);
+    public User getUserByLogin(String nickname);
     public void removeAll();
 }
