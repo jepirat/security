@@ -6,7 +6,7 @@
 </head>
 <body>
 
-<form th:method="PATCH" th:action="@{/users/{id}(id=${user.getId()})}" th:object="${user}" th:object="${role}">
+<form th:method="PATCH" th:action="@{/users/{id}(id=${user.getId()})}" th:object="${user}">
     <p th:text="${user.getId()}"></p>
     <label for="login">Enter User Name</label>
     <input type="text" th:field="*{login}" id="login"/>
@@ -20,8 +20,7 @@
     <label for="password">Enter Password</label>
     <input type="text" th:field="*{password}" id="password"/>
     <br/>
-    <label for="role">Enter Role</label>
-    <input type="text" th:field="*role" id="role"/>
+    <input type="text" name="role">
     <br/>
     <input type="submit" value="Update!"/>
 </form>

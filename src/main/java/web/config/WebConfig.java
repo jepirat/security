@@ -61,8 +61,8 @@ public class WebConfig implements WebMvcConfigurer {
         userService.removeAll();
         Set<Role> userRole = new HashSet<>();
         userRole.add(Role.USER);
-        User user = new User("user", "gena", "pupkin", "12345", userRole);
-        User admin = new User("admin", "vasya", "pupkin", "12345", roleSet);
+        User user = new User("u", "gena", "pupkin", "u", userRole);
+        User admin = new User("a", "vasya", "pupkin", "a", roleSet);
         userService.add(admin);
         userService.add(user);
         userService.getAllUsers().forEach(y -> System.out.println(y));

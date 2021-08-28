@@ -31,7 +31,11 @@ public class UserController {
 
     @GetMapping("/new")
     public String shiw(Model model) {
-        model.addAttribute("user", new User());
+        Set<Role> roles = new HashSet<>();
+        roles.add(Role.USER);
+        User user = new User();
+        user.setRoles(roles);
+        model.addAttribute("user", user);
         return "users/new";
     }
 
@@ -43,13 +47,20 @@ public class UserController {
 
     @GetMapping("/{id}/edit")
     public String edit(Model model, @PathVariable("id") long id) {
-        model.addAttribute("role", Role.values());
+        Set<String> list = new HashSet<>();
+       for (Role r : Role.values()) {
+           list.add(r.name());
+        }
+        model.addAttribute("list", list);
         model.addAttribute("user", userService.getUserById(id));
         return "users/edit";
     }
 
     @PatchMapping("/{id}")
-    public String update(@ModelAttribute("user") User user, @PathVariable("id") long id) {
+    public String update(@ModelAttribute("user") User user, @PathVariable("id") long id, @RequestParam String role) {
+        Set<Role> roles = new HashSet<>();
+        roles.add(Role.valueOf(role));
+        user.setRoles(roles);
         userService.updateUser(id, user);
         return "redirect:/users";
     }

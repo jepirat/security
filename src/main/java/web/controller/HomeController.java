@@ -10,10 +10,12 @@ import web.services.UserService;
 
 @Controller
 public class HomeController {
-    @GetMapping("/")
+    @GetMapping("/user")
     public String hello(Model model, Authentication authentication) {
         User user = (User) authentication.getPrincipal();
         model.addAttribute("user", user);
         return "user";
     }
+
+
 }
