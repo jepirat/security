@@ -6,6 +6,9 @@
     <title></title>
 </head>
 <body>
+<form th:action="@{/logout}" method="post">
+    <button type="submit">Sign Out</button>
+</form>
 <div>
     <form method="post" action="/login">
         <input name="j_username"/>

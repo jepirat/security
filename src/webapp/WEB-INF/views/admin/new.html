@@ -2,12 +2,13 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <title>Edit this user</title>
+    <title>Add User</title>
 </head>
 <body>
-
-<form th:method="PATCH" th:action="@{/users/{id}(id=${user.getId()})}" th:object="${user}">
-    <p th:text="${user.getId()}"></p>
+<form th:action="@{/logout}" method="post">
+    <button type="submit">Sign Out</button>
+</form>
+<form th:method="POST" th:action="@{/admin}" th:object="${user}">
     <label for="login">Enter User Name</label>
     <input type="text" th:field="*{login}" id="login"/>
     <br/>
@@ -20,9 +21,7 @@
     <label for="password">Enter Password</label>
     <input type="text" th:field="*{password}" id="password"/>
     <br/>
-    <input type="text" name="role">
-    <br/>
-    <input type="submit" value="Update!"/>
+    <input type="submit" value="Create!"/>
 </form>
 </body>
 </html>

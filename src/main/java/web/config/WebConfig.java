@@ -12,7 +12,6 @@ import org.thymeleaf.spring5.view.ThymeleafViewResolver;
 import web.model.Role;
 import web.model.User;
 import web.services.UserService;
-
 import java.util.HashSet;
 import java.util.Set;
 
@@ -56,16 +55,6 @@ public class WebConfig implements WebMvcConfigurer {
     }
 
     public void addViewControllers(ViewControllerRegistry viewControllerRegistry) {
-        Set<Role> roleSet = new HashSet<>();
-        roleSet.add(Role.ADMIN);
-        userService.removeAll();
-        Set<Role> userRole = new HashSet<>();
-        userRole.add(Role.USER);
-        User user = new User("u", "gena", "pupkin", "u", userRole);
-        User admin = new User("a", "vasya", "pupkin", "a", roleSet);
-        userService.add(admin);
-        userService.add(user);
-        userService.getAllUsers().forEach(y -> System.out.println(y));
         viewControllerRegistry.addViewController("/login").setViewName("login");
     }
 }

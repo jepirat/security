@@ -5,13 +5,16 @@
     <title>All users</title>
 </head>
 <body>
+<form th:action="@{/logout}" method="post">
+    <button type="submit">Sign Out</button>
+</form>
 <table>
     <tr>
         <th>ID</th>
         <th>Name</th>
         <th>LastName</th>
-        <th>Role</th>
         <th>Login</th>
+        <th>Role</th>
         <th>Update</th>
         <th>Delete</th>
     </tr>
@@ -21,13 +24,13 @@
         <td th:text="${user.getFirstName()}">model</td>
         <td th:text="${user.getLastName()}">model</td>
         <td th:text="${user.getRole()}">Role</td>
-        <td> <a th:href="@{/users/{id}/edit (id =${user.getId()})}">Update</a> </td>
-        <form th:method="DELETE" th:action="@{/users/{id} (id =${user.getId()})}">
+        <td> <a th:href="@{/admin/{id}/edit (id =${user.getId()})}">Update</a> </td>
+        <form th:method="DELETE" th:action="@{/admin/{id} (id =${user.getId()})}">
             <td><input type="submit" value="DELETE"/></td>
         </form>
     </tr>
 </table>
 
-<a href="/users/new"> New User</a>
+<a href="/admin/new"> New User</a>
 </body>
 </html>
